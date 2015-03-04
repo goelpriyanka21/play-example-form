@@ -8,7 +8,7 @@ import models.Student;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.formdata.StudentFormData;
+import views.formdata.PropertyFormData;
 import views.html.Index;
 
 /**
@@ -25,21 +25,21 @@ public class Application extends Controller {
    * @return The page containing the form and data.
    */
   public static Result getIndex(long id) {
-    StudentFormData studentData = (id == 0) ? new StudentFormData() : models.Student.makeStudentFormData(id);
-    Form<StudentFormData> formData = Form.form(StudentFormData.class).fill(studentData);
+    PropertyFormData propertyData = (id == 0) ? new PropertyFormData() : models.Student.makePropertyFormData(id);
+    Form<PropertyFormData> formData = Form.form(PropertyFormData.class).fill(propertyData);
     return ok(Index.render(
       formData,
-      Hobby.makeHobbyMap(studentData),
+      Hobby.makeHobbyMap(propertyData),
       GradeLevel.getNameList(),
-      GradePointAverage.makeGPAMap(studentData),
-      Major.makeMajorMap(studentData)
+      GradePointAverage.makeGPAMap(propertyData),
+      Major.makeMajorMap(propertyData)
     ));
   }
 
   /**
    * Process a form submission.
-   * First we bind the HTTP POST data to an instance of StudentFormData.
-   * The binding process will invoke the StudentFormData.validate() method.
+   * First we bind the HTTP POST data to an instance of PropertyFormData.
+   * The binding process will invoke the PropertyFormData.validate() method.
    * If errors are found, re-render the page, displaying the error data. 
    * If errors not found, render the page with the good data. 
    * @return The index page with the results of validation. 
@@ -47,7 +47,7 @@ public class Application extends Controller {
   public static Result postIndex() {
 
     // Get the submitted form data from the request object, and run validation.
-    Form<StudentFormData> formData = Form.form(StudentFormData.class).bindFromRequest();
+    Form<PropertyFormData> formData = Form.form(PropertyFormData.class).bindFromRequest();
 
     if (formData.hasErrors()) {
       // Don't call formData.get() when there are errors, pass 'null' to helpers instead. 

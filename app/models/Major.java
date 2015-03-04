@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import views.formdata.StudentFormData;
+import views.formdata.PropertyFormData;
 
 /**
  * Represent a student's majors.
@@ -47,7 +47,7 @@ public class Major {
    * with all unchecked boxes.
    * @return A map of Major names to booleans indicating the majors associated with the student.
    */
-  public static Map<String, Boolean> makeMajorMap(StudentFormData student) {
+  public static Map<String, Boolean> makeMajorMap(PropertyFormData student) {
     Map<String, Boolean> majorMap = new HashMap<String, Boolean>();
     for (Major major : allMajors) {
       majorMap.put(major.getName(),  (student == null) ? false : student.majors.contains(major.getName()));

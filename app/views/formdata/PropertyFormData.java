@@ -19,7 +19,7 @@ import java.util.List;
  * <li> A validate() method that returns null or a List[ValidationError].
  * </ul>
  */
-public class StudentFormData {
+public class PropertyFormData {
 
   public String name = "";
   public String password = "";
@@ -29,7 +29,7 @@ public class StudentFormData {
   public List<String> majors = new ArrayList<>(); 
 
   /** Required for form instantiation. */
-  public StudentFormData() {
+  public PropertyFormData() {
   }
 
   /**
@@ -41,7 +41,7 @@ public class StudentFormData {
    * @param hobbies The hobbies.
    * @param majors The majors. 
    */
-  public StudentFormData(String name, String password, GradeLevel level, GradePointAverage gpa, List<Hobby> hobbies, List<Major> majors) {
+  public PropertyFormData(String name, String password, GradeLevel level, GradePointAverage gpa, List<Hobby> hobbies, List<Major> majors) {
     this.name = name;
     this.password = password;
     this.level = level.getName();
@@ -55,7 +55,7 @@ public class StudentFormData {
   }
 
   /**
-   * Validates Form<StudentFormData>.
+   * Validates Form<PropertyFormData>.
    * Called automatically in the controller by bindFromRequest().
    * 
    * Validation checks include:

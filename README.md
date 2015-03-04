@@ -13,7 +13,7 @@ This application provides an example of form processing with the following featu
 
   * Separation of [form backing classes](https://github.com/ics-software-engineering/play-example-form/tree/master/app/views/formdata) from [model classes](https://github.com/ics-software-engineering/play-example-form/tree/master/app/models).
 
-  * Validation done with [validate()](https://github.com/ics-software-engineering/play-example-form/blob/master/app/views/formdata/StudentFormData.java#L57-123), not annotations.
+  * Validation done with [validate()](https://github.com/ics-software-engineering/play-example-form/blob/master/app/views/formdata/PropertyFormData.java#L57-123), not annotations.
 
   * Testing with [Fluentlenium](https://github.com/FluentLenium/FluentLenium).
     
@@ -84,14 +84,14 @@ The system [instantiates a couple of students on startup](https://github.com/ics
 By looking at the controller, you can see the basic approach for either form display (HTTP GET) or 
 form submission (HTTP POST):
   
-  * An instance of StudentFormData is passed to the templates for rendering. This class has public
+  * An instance of PropertyFormData is passed to the templates for rendering. This class has public
     fields as required by Play, and they are all String or List[String] because binding only works on strings.
     
   * Other component entities (Hobby, GradeLevel, GradePointAverage, Major) provide helper methods
     to support display of their values as strings along with the student's current value(s) for
     those components.
     
-  * The [Student.makeInstance](https://github.com/ics-software-engineering/play-example-form/blob/master/app/models/Student.java#L165-185) and [Student.makeStudentFormData](https://github.com/ics-software-engineering/play-example-form/blob/master/app/models/Student.java#L150-162)
+  * The [Student.makeInstance](https://github.com/ics-software-engineering/play-example-form/blob/master/app/models/Student.java#L165-185) and [Student.makePropertyFormData](https://github.com/ics-software-engineering/play-example-form/blob/master/app/models/Student.java#L150-162)
     methods provide conversion between the form data and model representations of a Student.
 
 **Review the models.**
@@ -117,7 +117,7 @@ subpackage, containing Bootstrap 3 Scala templates for various form controls. Ku
 Pearson](https://github.com/kaeawc) to writing these templates and making other helpful changes.
 
 Finally, the [views.formdata](https://github.com/ics-software-engineering/play-example-form/tree/master/app/views/formdata)
-subpackage contains the single backing class ([StudentFormData](https://github.com/ics-software-engineering/play-example-form/blob/master/app/views/formdata/StudentFormData.java)) required for this application.
+subpackage contains the single backing class ([PropertyFormData](https://github.com/ics-software-engineering/play-example-form/blob/master/app/views/formdata/PropertyFormData.java)) required for this application.
 Note that the backing class consists of public fields containing the String data to be displayed/bound in the form,
 as well as a validate() method that determines if the submitted form data is valid or not.
 
@@ -151,9 +151,9 @@ that I can see:
     (i.e. a Student that contains a List of Hobbies) in which display, binding, and validation
     can be done easily and understandably with a single class.
     
-  * **Integrity.**  The code provides validation in the StudentFormData class, and certain
+  * **Integrity.**  The code provides validation in the PropertyFormData class, and certain
     methods (such as Student.makeInstance) must assume that they are being passed a valid
-    StudentFormData instance.  That kind of assumption is worrisome, and annotation-based 
+    PropertyFormData instance.  That kind of assumption is worrisome, and annotation-based 
     constraints could avoid it.  Annotation-based constraints also offer the potential
     to simultaneously apply to both the database model and the form validation, which would be really
     nice.  As a first step, I played around for a while with [Custom Data Binding](http://www.playframework.com/documentation/2.0/JavaForms),

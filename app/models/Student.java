@@ -2,14 +2,14 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
-import views.formdata.StudentFormData;
+import views.formdata.PropertyFormData;
 
 /**
  * Simple model class to represent students.
  * This class includes:
  * <ul>
  * <li> The model structure (fields, plus getters and setters).
- * <li> Methods to facilitate form display (makeStudentFormData).
+ * <li> Methods to facilitate form display (makePropertyFormData).
  * <li> Some fields and methods to "fake" a database of Students, including valid and invalid.
  * </ul> 
  */
@@ -148,14 +148,14 @@ public class Student {
   }
 
   /**
-   * Return a StudentFormData instance constructed from a student instance.
+   * Return a PropertyFormData instance constructed from a student instance.
    * @param id The ID of a student instance.
-   * @return The StudentFormData instance, or throws a RuntimeException. 
+   * @return The PropertyFormData instance, or throws a RuntimeException. 
    */
-  public static StudentFormData makeStudentFormData(long id) {
+  public static PropertyFormData makePropertyFormData(long id) {
     for (Student student : allStudents) {
       if (student.getId() == id) {
-        return new StudentFormData(student.name, student.password, student.level, student.gpa, student.hobbies, student.majors);
+        return new PropertyFormData(student.name, student.password, student.level, student.gpa, student.hobbies, student.majors);
       }
     }
     throw new RuntimeException("Couldn't find student");
@@ -169,7 +169,7 @@ public class Student {
    * @param formData The student form data.
    * @return A student instance. 
    */
-  public static Student makeInstance(StudentFormData formData) {
+  public static Student makeInstance(PropertyFormData formData) {
     Student student = new Student();
     student.name = formData.name;
     student.password = formData.password;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import views.formdata.StudentFormData;
+import views.formdata.PropertyFormData;
 
 /**
  * Represent a student's hobbies.
@@ -47,7 +47,7 @@ public class Hobby {
    * with all unchecked boxes.
    * @return A map of hobby names to booleans indicating the hobbies associated with the student.
    */
-  public static Map<String, Boolean> makeHobbyMap(StudentFormData student) {
+  public static Map<String, Boolean> makeHobbyMap(PropertyFormData student) {
     Map<String, Boolean> hobbyMap = new HashMap<String, Boolean>();
     for (Hobby hobby : allHobbies) {
       hobbyMap.put(hobby.getName(), (student != null && student.hobbies.contains(hobby.getName())));

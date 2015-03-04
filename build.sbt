@@ -1,4 +1,4 @@
-name := """play-example-form"""
+name := """app-backend"""
 
 version := "1.0-SNAPSHOT"
 
